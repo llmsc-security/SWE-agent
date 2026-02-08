@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  swe-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: swe-agent-container
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    ports:
+      - "11400:8000"
+    volumes:
+      - ./logs:/app/logs
+      - ~/.ssh:/root/.ssh:ro

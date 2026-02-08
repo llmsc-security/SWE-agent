@@ -17,4 +17,10 @@ WORKDIR /home/katy/
 COPY server /home/katy
 
 #Run the program with socat
-CMD su katy -c "socat TCP-LISTEN:4242,reuseaddr,fork EXEC:/home/katy/server" 
+
+# --- Auto-Generated Entrypoint Configuration ---
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+RUN mkdir -p /var/log && touch /var/log/app.log
+EXPOSE 4242
+ENTRYPOINT ["/entrypoint.sh"]
