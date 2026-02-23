@@ -33,8 +33,8 @@ RUN useradd -m -u 1000 appuser && \
 
 USER appuser
 
-# Expose the API server port (internal port 8000)
-EXPOSE 8000
+# Expose the mapped port 11400
+EXPOSE 11400
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
